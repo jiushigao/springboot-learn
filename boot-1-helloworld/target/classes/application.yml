@@ -1,0 +1,7 @@
+server:
+  port: 8081
+
+mycar:
+  brand: BYD
+  price: 100000
+

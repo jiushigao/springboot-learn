@@ -1,0 +1,8 @@
+spring:
+  mail:
+    username: 2836428900@qq.com
+    password: monqdkhtueaodchj #不想暴露密码可以使用授权码
+    host: smtp.qq.com
+    properties:
+      mail.smtp.ssl.enabled: true
+

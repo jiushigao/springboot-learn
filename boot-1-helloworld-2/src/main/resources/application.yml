@@ -1,0 +1,26 @@
+person:
+  name: '杰哥  \n  张三'
+  #单引号会将\n作为字符串输出  双引号会将\n作为换行输出
+  #单引号会转义  双引号不会转义
+  age: 26
+  birthDay: 1995/4/3
+#  sport: [篮球,排球]
+  sports:
+    - 篮球
+    - 排球
+  scores: {math: 99,english: 88}
+  pet:
+    name: 阿猫
+    weight: 99.9
+
+  pets:
+    sick:
+      - {name: 阿猫,weight: 99.9}
+      - {name: 阿狗,weight: 88.8}
+    health:
+      - name: 阿虎
+        weight: 121.9
+
+
+
+

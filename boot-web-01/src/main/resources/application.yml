@@ -1,0 +1,17 @@
+spring:
+  mvc:
+#    static-path-pattern: /res/**
+    #静态资源前缀，方便后期作拦截放行.  加上此配置后欢迎页index.html需要跟一般静态资源一样添加路径，若无此配置直接localhost:8080即可访问欢迎页
+    #此配置同样会影响favicon.ico网站图标生效
+    hiddenmethod:
+      filter:
+        enabled: true  #开启页面表单的rest风格（相同请求路径通过请求方式区分请求目的），此项默认为false，为false时表单默认只能提交get、post请求，改为true后OrderedHiddenHttpMethodFilter会生效，
+        #会读取表单提交的_method属性用于改变请求方式，可以额外发送的请求方式有delete、put、patch
+        #若使用postman这种客户端直接改变请求方式的则无需改动此项
+    contentnegotiation:
+      favor-parameter: true #开启请求参数内容协商  请求参数中添加format（json,xml）字段即可转换返回数据格式
+#  web:
+#    resources:
+#      static-locations: [classpath:/haha/]  #自定义静态资源路径
+#      add-mappings: false #禁用静态资源
+

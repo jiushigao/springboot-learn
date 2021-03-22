@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/user" method="get">
+        <input value="getUser" type="submit">
+    </form>
+    <form action="/user" method="post">
+        <input value="postUser" type="submit">
+    </form>
+    <form action="/user" method="post">
+        <input name="_method" type="hidden" value="delete">
+        <input name="_m" type="hidden" value="delete">
+        <input value="deleteUser" type="submit">
+    </form>
+    <form action="/user" method="post">
+        <input name="_method" type="hidden" value="put">
+        <input value="putUser" type="submit">
+    </form>
+
+测试基本注解：
+<ul>
+    <a href="/car/1/owner/jie?age=26&interests=篮球&interests=唱">/car/{id}}/owner/{username}</a>
+    <li>@PathVariable(路径变量)</li>
+    <li>@RequestHeader(请求头)</li>
+    <li>@RequestParam(请求参数)</li>
+    <li>@CookieValue(获取cookie值)</li>
+    <li>@RequestBody(获取post请求的请求体)</li>
+    <li>@RequestAttribute(获取request域属性)</li>
+    <li>@MatrixVariable(矩阵变量)</li>
+</ul>
+    <br/>
+    <br/>
+表单测试：
+<form action="/email" method="post">
+    name:<input name="name"><br/>
+    email:<input name="email">
+    <input value="提交" type="submit">
+</form>
+<br/>
+    <br/>
+矩阵变量测试：
+<a href="/cars/sell;low=34;types=bm,byd,bc">/cars/sell;low=;types=</a><br/>
+<a href="/cars/sell;low=34;types=bm;types=byd;types=bc">/cars/sell;low=;types=;types=;types=</a><br/>
+<a href="/boss/1;age=34/2;age=45">/boss/1;age=/2;age=</a>
+<br/>
+<br/>
+自定义参数：<br/>
+<form action="/person" method="post">
+    username:<input name="username"><br/>
+    age:<input name="age"><br/>
+    birthday:<input name="birthday" value="1995/4/3"><br/>
+<!--    pet.name:<input name="pet.name"><br/>-->
+<!--    pet.age:<input name="pet.age"><br/>-->
+    pet:<input name="pet"><br/><!--通过自定义转换器将String类型数据转换为Pet类型-->
+    <input value="提交" type="submit">
+</form>
+</body>
+</html>

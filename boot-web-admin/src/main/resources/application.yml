@@ -1,0 +1,82 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  datasource:
+    url: jdbc:mysql://localhost:3306/my_database
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      stat-view-servlet:  #配置监控页功能
+        enabled: true
+        login-username: admin
+        login-password: 123456
+        reset-enable: false
+      web-stat-filter:    #监控web
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+      filters: stat,wall   #底层开启功能  stat：sql监控 ， wall:防火墙
+      aop-patterns: com.example.admin.*   #监控SpringBean
+      filter:  #对上面filters里面的stat进行详细配置
+        stat:
+          slow-sql-millis: 1000
+          log-slow-sql: true
+          enabled: true
+        wall:
+          enabled: true
+          config:
+            drop-table-allow: false
+#redis://user:password@example.com:6379
+  redis:
+    host: r-bp1m06pgfb256dhtwxpd.redis.rds.aliyuncs.com
+    port: 6379
+    password: wj:CSpa2s_is
+    client-type: jedis
+  boot:
+    admin:
+      client:
+        url: http://localhost:8888  #指标监控页面服务地址
+        instance:
+          prefer-ip: true  #使用ip注册
+  application:
+    name: SpringBootAdmin
+#    jedis:
+#      pool:
+#        max-active: 10
+#    url: redis://wj:CSpa2s_is@r-bp1m06pgfb256dhtwxpd.redis.rds.aliyuncs.com:6379
+
+#    filters: stat,wall
+
+uploadPath: D:\Work\cache\
+mybatis:
+#  config-location: classpath:mybatis/mybatis-config.xml  #全局配置文件位置
+  mapper-locations: classpath:mybatis/mapper/*.xml   #sql映射文件位置
+  configuration: #指定mybatis全局配置文件中的配置项
+    map-underscore-to-camel-case: true
+
+# management  是所有actuator的配置
+management:
+  endpoints:  #所有端点通用配置
+    enabled-by-default: true #默认开启所有监控端点  true
+    web:
+      exposure:
+        include: '*' #在web端暴露所有监控端点
+  endpoint:  #指定端点详细配置
+    health:
+      show-details: always
+      enabled: true
+    beans:
+      enabled: true
+    info:
+      enabled: true
+    metrics:
+      enabled: true
+info:
+  appName: boot-admin
+  version: 1.0.0
+  mavenProjectName: @project.artifactId@  #@@  获取pom.xml文件中的属性
+  mavenProjectVersion: @project.version@
+

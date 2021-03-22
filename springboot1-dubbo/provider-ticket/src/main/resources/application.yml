@@ -1,0 +1,4 @@
+spring:
+  dubbo:
+    registry: zookeeper://192.168.1.122:2181
+    appname: provider-ticket

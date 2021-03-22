@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active: myprod
+    group:  #加载多个配置文件
+      myprod[0]: prod
+      myprod[1]: prod1
+      mydev[0]: dev
